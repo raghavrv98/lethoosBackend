@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +13,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.7",
     "nodemon": "^2.0.6"
+  },
+  "engines": {
+    "node" : "10.16.2"
   }
 }
