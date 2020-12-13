@@ -21,7 +21,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 //user routes 
 
-app.use('/api', postsRoutes);
+app.use('https://lethoos.herokuapp.com/api', postsRoutes);
 
 
 const PORT = process.env.PORT || 5000;
