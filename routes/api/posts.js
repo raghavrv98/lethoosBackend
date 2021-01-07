@@ -8,7 +8,7 @@ const Posts = require('../../models/posts')
 //@routes POST api/posts
 
 
-//@desc Get all post 
+// Get all post 
 
 router.get('/posts', async (req, res) => {
 	try {
@@ -21,7 +21,7 @@ router.get('/posts', async (req, res) => {
 	}
 })
 
-//@desc Get post by id
+// Get post by id
 
 router.get('/posts/:id', async (req, res) => {
 	try {
@@ -35,11 +35,9 @@ router.get('/posts/:id', async (req, res) => {
 })
 
 
-//@desc Create A post 
+// Create A post 
 
 router.post('/posts', async (req, res) => {
-	// res.send('Lets create Post !');
-	// console.log('body', req.body);
 	const newPost = new Posts(req.body);
 	try {
 		const post = await newPost.save();
@@ -52,7 +50,7 @@ router.post('/posts', async (req, res) => {
 });
 
 
-//@desc Delete A post 
+// Delete A post 
 
 router.delete('/posts/:id', async (req, res) => {
 	const deletePost = new Posts(req.body);
@@ -66,7 +64,7 @@ router.delete('/posts/:id', async (req, res) => {
 	}
 });
 
-//@desc Update A post 
+// Update A post 
 
 router.patch('/posts/:id', async (req, res) => {
 	const updatePost = new Posts(req.body);
