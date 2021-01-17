@@ -5,7 +5,8 @@ const { MONGO_URI } = require('./config');
 const path = require('path');
 //routes
 
-const postRoutes = require('./routes/api/shops');
+const shopRoutes = require('./routes/api/shops');
+const customerLoginRoutes = require('./routes/api/customerLogin');
 
 const app = express();
 
@@ -36,7 +37,8 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 //user routes 
 
-app.use('/api', postRoutes);
+app.use('/api', shopRoutes);
+app.use('/api', customerLoginRoutes);
 
 
 app.use('/profile', express.static('upload/images'));
