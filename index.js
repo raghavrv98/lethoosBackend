@@ -7,6 +7,7 @@ const path = require('path');
 
 const shopRoutes = require('./routes/api/shops');
 const customerLoginRoutes = require('./routes/api/customerLogin');
+const orderDetailsRoutes = require('./routes/api/orderDetails');
 
 const app = express();
 
@@ -39,6 +40,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
+app.use('/api', orderDetailsRoutes);
 
 
 app.use('/profile', express.static('upload/images'));

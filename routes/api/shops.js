@@ -13,7 +13,6 @@ const Shops = require('../../models/shops')
 router.get('/shop', async (req, res) => {
 	try {
 		let shops = await Shops.find();
-		console.log('shops: ', shops);
 		let shopList = []
 		shops.map(val => {
 			let obj = {
