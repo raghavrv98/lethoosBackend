@@ -3,13 +3,17 @@ const multer = require('multer');
 const mongoose = require('mongoose');
 const { MONGO_URI } = require('./config');
 const path = require('path');
-//routes
+const cors = require('cors');
 
+
+//routes
 const shopRoutes = require('./routes/api/shops');
 const customerLoginRoutes = require('./routes/api/customerLogin');
 const orderDetailsRoutes = require('./routes/api/orderDetails');
 
 const app = express();
+
+app.use(cors())
 
 //storage engine
 
