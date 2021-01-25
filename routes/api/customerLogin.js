@@ -36,7 +36,7 @@ router.post('/customerCheck', async (req, res) => {
 		else {
 			userDetails = {
 				msg: "Incorrect Mobile Number or Password",
-				data: []
+				data: {}
 			}
 		}
 		if (!userDetails) throw Error('No items');
@@ -71,7 +71,7 @@ router.post('/customerLogin', async (req, res) => {
 		if (login.length == 1) {
 			userDetails = {
 				msg: "User Exist",
-				data: []
+				data: {}
 			}
 			res.status(200).json(userDetails);
 		}
