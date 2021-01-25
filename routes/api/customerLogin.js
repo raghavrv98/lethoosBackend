@@ -10,7 +10,7 @@ const customerLogin = require('../../models/customerLogin')
 router.post('/customerCheck', async (req, res) => {
 	const payload = new customerLogin(req.body);
 	try {
-		const login = await customerLogin.find({
+		let login = await customerLogin.find({
 			$and: [
 				{ "mobileNumber": payload.mobileNumber },
 				{ "password": payload.password }
@@ -18,9 +18,19 @@ router.post('/customerCheck', async (req, res) => {
 		})
 		var userDetails = {}
 		if (login.length > 0) {
+			login = [{
+				orderHistory: login[0].orderHistory,
+				notifications: login[0].notifications,
+				coupon: login[0].coupon,
+				_id: login[0]._id,
+				address: login[0].address,
+				name: login[0].name,
+				mobileNumber: login[0].mobileNumber,
+				date: login[0].date
+			}]
 			userDetails = {
-				msg: "User EXist",
-				data: login
+				msg: "User Exist",
+				data: login[0]
 			}
 		}
 		else {
@@ -54,11 +64,22 @@ router.get('/customerLogin/:id', async (req, res) => {
 // Create customer Login 
 
 router.post('/customerLogin', async (req, res) => {
-	const login = new customerLogin(req.body);
+	const payload = new customerLogin(req.body);
 	try {
-		const post = await login.save();
-		if (!post) throw Error('Something went wrong while saving the customerLogin');
-		res.status(200).json(post);
+		let login = await customerLogin.find({ "mobileNumber": payload.mobileNumber })
+
+		if (login.length == 1) {
+			userDetails = {
+				msg: "User Exist",
+				data: []
+			}
+			res.status(200).json(userDetails);
+		}
+		else {
+			const post = await payload.save();
+			if (!post) throw Error('Something went wrong while saving the customerLogin');
+			res.status(200).json(post);
+		}
 	}
 	catch (err) {
 		res.status(400).json({ msg: err })
