@@ -18,7 +18,7 @@ router.post('/customerCheck', async (req, res) => {
 		})
 		var userDetails = {}
 		if (login.length > 0) {
-			login = [{
+			login = {
 				orderHistory: login[0].orderHistory,
 				notifications: login[0].notifications,
 				coupon: login[0].coupon,
@@ -27,10 +27,10 @@ router.post('/customerCheck', async (req, res) => {
 				name: login[0].name,
 				mobileNumber: login[0].mobileNumber,
 				date: login[0].date
-			}]
+			}
 			userDetails = {
 				msg: "User Exist",
-				data: login[0]
+				data: login
 			}
 		}
 		else {
@@ -67,7 +67,7 @@ router.post('/customerLogin', async (req, res) => {
 	const payload = new customerLogin(req.body);
 	try {
 		let login = await customerLogin.find({ "mobileNumber": payload.mobileNumber })
-
+		var userDetails = {}
 		if (login.length == 1) {
 			userDetails = {
 				msg: "User Exist",
@@ -76,9 +76,26 @@ router.post('/customerLogin', async (req, res) => {
 			res.status(200).json(userDetails);
 		}
 		else {
-			const post = await payload.save();
-			if (!post) throw Error('Something went wrong while saving the customerLogin');
-			res.status(200).json(post);
+			let login = await payload.save();
+			
+			login = {
+				orderHistory: login.orderHistory,
+				notifications: login.notifications,
+				coupon: login.coupon,
+				_id: login._id,
+				address: login.address,
+				name: login.name,
+				mobileNumber: login.mobileNumber,
+				date: login.date
+			}
+
+			userDetails = {
+				msg : "User Created",
+				data : login
+			}
+
+			if (!userDetails) throw Error('Something went wrong while saving the customerLogin');
+			res.status(200).json(userDetails);
 		}
 	}
 	catch (err) {
