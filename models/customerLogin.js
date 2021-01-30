@@ -10,7 +10,19 @@ const customerLoginSchema = new Schema({
 		type: String,
 		// required: true,
 	},
+	alternateMobileNumber: {
+		type: String,
+		// required: true,
+	},
 	address: {
+		type: String,
+		// required: true,
+	},
+	area: {
+		type: String,
+		// required: true,
+	},
+	paymentMethod: {
 		type: String,
 		// required: true,
 	},
@@ -35,14 +47,26 @@ const customerLoginSchema = new Schema({
 		// required: true,
 	},
 	status: {
-		type: String,
+		type: Boolean,
 		// required: true,
 	},
 	date: {
-		type: Date,
+		type: Number,
 		default: new Date().getTime(),
 	}
 })
 
-module.exports = mongoose.model('Login', customerLoginSchema); 
+module.exports = mongoose.model('Login', customerLoginSchema);
 
+// couponCode
+
+// coupon: [
+	// {
+	// 	"name": "DEL10",
+	// 	"description": "Free Home Delivery",
+	// 	"amount": 10,
+	// 	"offeredBy": "Lethoos",
+	// 	"validity": "01-02-2021",
+	// 	"redeemAttempt": "1"
+	// }
+// ]

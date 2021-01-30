@@ -43,11 +43,11 @@ const orderSchema = new Schema({
 		// required: true,
 	},
 	deliveryCharge: {
-		type: Int32Array,
+		type: Number,
 		// required: true,
 	},
 	totalDiscount: {
-		type: Int32Array,
+		type: Number,
 		// required: true,
 	},
 	paymentMode: {
@@ -59,7 +59,7 @@ const orderSchema = new Schema({
 		// required: true,
 	},
 	orderDate: {
-		type: Date,
+		type: Number,
 		default: new Date().getTime(),
 	}
 })

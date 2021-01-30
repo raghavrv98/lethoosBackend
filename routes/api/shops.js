@@ -17,16 +17,18 @@ router.get('/shop', async (req, res) => {
 		shops.map(val => {
 			let obj = {
 				_id: val._id,
-				vendorName: val.vendorName,
+				name: val.name,
 				description: val.description,
 				address: val.address,
+				mobileNumber: val.mobileNumber,
+				image: val.image,
 				rating: val.rating,
 				discount: val.discount,
-				delieveryTime: val.delieveryTime,
+				deliveryTime: val.deliveryTime,
 				image: val.image,
 				status: val.status,
 				time: val.time,
-				date : moment(val.date).format('DD MMM YYYY HH:mm:ss')
+				date: moment(val.date).format('DD MMM YYYY HH:mm:ss')
 			}
 			shopList.push(obj)
 		})
@@ -56,7 +58,7 @@ router.get('/shop/:id', async (req, res) => {
 router.post('/shop', async (req, res) => {
 	const shops = new Shops(req.body);
 	try {
-		const post = await shops.save();	
+		const post = await shops.save();
 		if (!post) throw Error('Something went wrong while saving the post');
 		res.status(200).json(post);
 	}

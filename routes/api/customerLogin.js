@@ -23,10 +23,12 @@ router.post('/customerCheck', async (req, res) => {
 				notifications: login[0].notifications,
 				coupon: login[0].coupon,
 				_id: login[0]._id,
-				address: login[0].address,
+				image: login[0].iamge,
 				name: login[0].name,
 				mobileNumber: login[0].mobileNumber,
-				date: login[0].date
+				alternateMobileNumber: login[0].alternateMobileNumber,
+				area: login[0].area,
+				address: login[0].address
 			}
 			userDetails = {
 				msg: "User Exist",
@@ -77,7 +79,7 @@ router.post('/customerLogin', async (req, res) => {
 		}
 		else {
 			let login = await payload.save();
-			
+
 			login = {
 				orderHistory: login.orderHistory,
 				notifications: login.notifications,
@@ -90,8 +92,8 @@ router.post('/customerLogin', async (req, res) => {
 			}
 
 			userDetails = {
-				msg : "User Created",
-				data : login
+				msg: "User Created",
+				data: login
 			}
 
 			if (!userDetails) throw Error('Something went wrong while saving the customerLogin');
