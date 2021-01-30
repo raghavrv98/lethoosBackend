@@ -30,9 +30,13 @@ const postSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	vendorName: {
+	name: {
 		type: String,
 		// required: true,
+	},
+	mobileNumber: {
+		type: String,
+		// required: true,		
 	},
 	description: {
 		type: String,
@@ -44,7 +48,7 @@ const postSchema = new Schema({
 	},
 	date: {
 		type: Date,
-		default: Date.now,
+		default: new Date().getTime(),
 	}
 })
 

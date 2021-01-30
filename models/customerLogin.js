@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const customerLoginSchema = new Schema({
-	address: {
-		type: String,
-		// required: true,
-	},
 	name: {
 		type: String,
 		// required: true,
 	},
 	mobileNumber: {
+		type: String,
+		// required: true,
+	},
+	address: {
 		type: String,
 		// required: true,
 	},
@@ -40,7 +40,7 @@ const customerLoginSchema = new Schema({
 	},
 	date: {
 		type: Date,
-		default: Date.now,
+		default: new Date().getTime(),
 	}
 })
 

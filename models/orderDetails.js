@@ -2,15 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-	shopAddress: {
-		type: String,
-		// required: true,
-	},
 	shopName: {
 		type: String,
 		// required: true,
 	},
 	shopMobileNumber: {
+		type: String,
+		// required: true,
+	},
+	shopAddress: {
+		type: String,
+		// required: true,
+	},
+	shopImage: {
+		type: String,
+		// required: true,
+	},
+	customerName: {
 		type: String,
 		// required: true,
 	},
@@ -22,11 +30,7 @@ const orderSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	customerName: {
-		type: String,
-		// required: true,
-	},
-	customerId: {
+	orderId: {
 		type: String,
 		// required: true,
 	},
@@ -35,14 +39,18 @@ const orderSchema = new Schema({
 		// required: true,
 	},
 	couponCode: {
-		type: String,
+		type: Array,
 		// required: true,
 	},
 	deliveryCharge: {
-		type: String,
+		type: Int32Array,
 		// required: true,
 	},
-	totalAmount: {
+	totalDiscount: {
+		type: Int32Array,
+		// required: true,
+	},
+	paymentMode: {
 		type: String,
 		// required: true,
 	},
@@ -50,9 +58,9 @@ const orderSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	date: {
+	orderDate: {
 		type: Date,
-		default: Date.now,
+		default: new Date().getTime(),
 	}
 })
 
