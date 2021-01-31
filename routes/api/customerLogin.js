@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
+const wbm = require('wbm');
+
+
 //customer Login model
 
 const customerLogin = require('../../models/customerLogin')
@@ -126,6 +129,14 @@ router.patch('/customerLogin/:id', async (req, res) => {
 	try {
 		const login = await customerLogin.findByIdAndUpdate(req.params.id, req.body);
 		if (!login) throw Error('Something went wrong while updating the login!');
+
+		wbm.start().then(async () => {
+			const phones = ['918630422423', '918192095423'];
+			const message = 'Thanks for order. Your Bill Details... \n\n\n\n';
+			await wbm.send(phones, message);
+			await wbm.end();
+		}).catch(err => console.log(err));
+
 		res.status(200).json({ success: true });
 	}
 	catch (err) {
