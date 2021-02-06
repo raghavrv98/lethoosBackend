@@ -22,6 +22,10 @@ const postSchema = new Schema({
 		type: Boolean,
 		// required: true,
 	},
+	priority: {
+		type: String,
+		// required: true,
+	},
 	time: {
 		type: String,
 		// required: true,
@@ -55,38 +59,32 @@ const postSchema = new Schema({
 module.exports = mongoose.model('Shops', postSchema);
 
 // {
-// 	"name" : "Garg's Bakery",
-// 	"mobileNumber" : "1234567890",
-// 	"address":"Baldev Ganj, Near Gyasi Halwai",
-// 	"image" : "https://previews.123rf.com/images/mknoxgray/mknoxgray1904/mknoxgray190400010/121194154-cake-shop-a-party-without-cake-is-just-a-meeting-cartoon-vector-illustration.jpg",
+// 	"name" : "Chaska Family Restaurant",
+// 	"mobileNumber" : "9999999999",
+// 	"address":"Bhagwati Road",
+// 	"image" : "https://previews.123rf.com/images/dmitrymoi/dmitrymoi1702/dmitrymoi170200016/71707598-restaurant-or-cafe-exterior-building-vector-cartoon-illustration.jpg",
 // 	"status" : true,
 // 	"time":"2:00 PM to 8:30 PM",
-// 	"description":"Famous for Bakery items and Cakes",
-// 	"details" : [],
+// 	"description":"All Food are at one Restaurant",
+// 	"details" : [{
+// 		"name" : "Masala Dosa",
+// 		"itemsAvailable" : "1",
+// 		"image" : "https://i.ytimg.com/vi/CCab5oh0ZOc/maxresdefault.jpg",
+// 		"fullPrice":"40",
+// 		"halfPrice":"",
+// 		"halfAvailable" : false,
+// 	 "itemNo" : 1
+// 	},
+// 	{
+// 		"name" : "Cheese Pizza",
+// 		"itemsAvailable" : "1",
+// 		"image" : "https://tummytrip.com/wp-content/uploads/2019/12/Cheese-Pizza-500x375.jpg",
+// 		"fullPrice":"150",
+// 		"halfPrice":"",
+// 		"halfAvailable" : false
+// 	 "itemNo" : 2
+// 	}],
 // 	"rating" : "5",
 // 	"discount":"NA",
 // 	"delieveryTime" : "40 min"
 // 	}
-
-
-// shop details
-
-// {
-// 	"name" : "Chocolate Cake",
-// 	"quantity" : "1",
-// 	"image" : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F693494.jpg&q=85",
-// 	"fullPrice":"350",
-// 	"halfPrice":"",
-// 	"halfAvailable" : false,
-//  "itemNo" : 1
-// },
-// {
-// 	"name" : "Black Forest Cake",
-// 	"quantity" : "1",
-// 	"image" : "https://cdn.igp.com/f_auto,q_auto,t_prodl/products/p-classic-black-forest-cake-half-kg--108742-m.jpg",
-// 	"fullPrice":"350",
-// 	"halfPrice":"",
-// 	"halfAvailable" : false
-//  "itemNo" : 2
-// },
-

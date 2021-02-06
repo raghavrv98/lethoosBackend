@@ -130,12 +130,12 @@ router.patch('/customerLogin/:id', async (req, res) => {
 		const login = await customerLogin.findByIdAndUpdate(req.params.id, req.body);
 		if (!login) throw Error('Something went wrong while updating the login!');
 
-		wbm.start().then(async () => {
-			const phones = ['918630422423', '918192095423'];
-			const message = 'Thanks for order. Your Bill Details... \n\n\n\n';
-			await wbm.send(phones, message);
-			await wbm.end();
-		}).catch(err => console.log(err));
+		// wbm.start().then(async () => {
+		// 	const phones = ['918630422423', '918192095423'];
+		// 	const message = 'Thanks for order. Your Bill Details... \n\n\n\n';
+		// 	await wbm.send(phones, message);
+		// 	await wbm.end();
+		// }).catch(err => console.log(err));
 
 		res.status(200).json({ success: true });
 	}
