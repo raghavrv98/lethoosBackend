@@ -59,29 +59,30 @@ const postSchema = new Schema({
 module.exports = mongoose.model('Shops', postSchema);
 
 // {
-// 	"name" : "Chaska Family Restaurant",
-// 	"mobileNumber" : "9999999999",
-// 	"address":"Bhagwati Road",
-// 	"image" : "https://previews.123rf.com/images/dmitrymoi/dmitrymoi1702/dmitrymoi170200016/71707598-restaurant-or-cafe-exterior-building-vector-cartoon-illustration.jpg",
+// 	"name" : "Chinese Fast Food",
+// 	"mobileNumber" : "9991234567",
+// 	"address":"Near Railway Station",
+// 	"image" : "https://previews.123rf.com/images/artisticco/artisticco1701/artisticco170100013/69367031-a-vector-illustration-of-fast-food-restaurant.jpg",
 // 	"status" : true,
-// 	"time":"2:00 PM to 8:30 PM",
-// 	"description":"All Food are at one Restaurant",
+// "priority" : "3",
+// 	"time":"2:00 PM to 8:00 PM",
+// 	"description":"Famous for its Chinese Fast Food",
 // 	"details" : [{
-// 		"name" : "Masala Dosa",
+// 		"name" : "Veg Momos",
 // 		"itemsAvailable" : "1",
-// 		"image" : "https://i.ytimg.com/vi/CCab5oh0ZOc/maxresdefault.jpg",
-// 		"fullPrice":"40",
+// 		"image" : "https://instafitness.in/wp-content/uploads/2020/05/keto-momos-recipe.jpg",
+// 		"fullPrice":"30",
 // 		"halfPrice":"",
 // 		"halfAvailable" : false,
 // 	 "itemNo" : 1
 // 	},
 // 	{
-// 		"name" : "Cheese Pizza",
+// 		"name" : "Veg Noodles",
 // 		"itemsAvailable" : "1",
-// 		"image" : "https://tummytrip.com/wp-content/uploads/2019/12/Cheese-Pizza-500x375.jpg",
-// 		"fullPrice":"150",
+// 		"image" : "https://www.loveandoliveoil.com/wp-content/uploads/2015/03/soy-sauce-noodlesH2.jpg",
+// 		"fullPrice":"30",
 // 		"halfPrice":"",
-// 		"halfAvailable" : false
+// 		"halfAvailable" : false,
 // 	 "itemNo" : 2
 // 	}],
 // 	"rating" : "5",

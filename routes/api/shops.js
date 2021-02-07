@@ -27,6 +27,7 @@ router.get('/shop', async (req, res) => {
 				deliveryTime: val.deliveryTime,
 				image: val.image,
 				status: val.status,
+				priority: val.priority,
 				time: val.time,
 				date: moment(val.date).format('DD MMM YYYY HH:mm:ss')
 			}
