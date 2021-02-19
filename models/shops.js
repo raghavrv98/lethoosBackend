@@ -59,33 +59,134 @@ const postSchema = new Schema({
 module.exports = mongoose.model('Shops', postSchema);
 
 // {
-// 	"name" : "Chinese Fast Food",
-// 	"mobileNumber" : "9991234567",
-// 	"address":"Near Railway Station",
-// 	"image" : "https://previews.123rf.com/images/artisticco/artisticco1701/artisticco170100013/69367031-a-vector-illustration-of-fast-food-restaurant.jpg",
-// 	"status" : true,
-// "priority" : "3",
-// 	"time":"2:00 PM to 8:00 PM",
-// 	"description":"Famous for its Chinese Fast Food",
-// 	"details" : [{
-// 		"name" : "Veg Momos",
-// 		"itemsAvailable" : "1",
-// 		"image" : "https://instafitness.in/wp-content/uploads/2020/05/keto-momos-recipe.jpg",
-// 		"fullPrice":"30",
-// 		"halfPrice":"",
-// 		"halfAvailable" : false,
-// 	 "itemNo" : 1
-// 	},
-// 	{
-// 		"name" : "Veg Noodles",
-// 		"itemsAvailable" : "1",
-// 		"image" : "https://www.loveandoliveoil.com/wp-content/uploads/2015/03/soy-sauce-noodlesH2.jpg",
-// 		"fullPrice":"30",
-// 		"halfPrice":"",
-// 		"halfAvailable" : false,
-// 	 "itemNo" : 2
-// 	}],
-// 	"rating" : "5",
-// 	"discount":"NA",
-// 	"delieveryTime" : "40 min"
-// 	}
+// 	"name": "Food Fusion",
+// 	"mobileNumber": "8192095423",
+// 	"address": "It's a Virtual Shop",
+// 	"image": "https://previews.123rf.com/images/vectorshots/vectorshots1308/vectorshots130800001/21233529-food-shop-cartoon-business-vector-character.jpg",
+// 	"status": true,
+// 	"priority": "1",
+// 	"time": "2:00 PM to 8:00 PM",
+// 	"description": "Different Combinations of food including North, South, Italian.",
+// 	"details": [
+// 	  {
+// 		"name": "Half & Half Pizza",
+// 		"itemsAvailable": "1",
+// 		"image": "https://i.ytimg.com/vi/CR17b7Y6rI4/mqdefault.jpg",
+// 		"fullPrice": "130",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 1
+// 	  },
+// 	  {
+// 		"name": "Bread Pizza",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "50",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 2
+// 	  },
+// 	  {
+// 		"name": "Patties Pizza",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "60",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 3
+// 	  },
+// 	  {
+// 		"name": "Burgerizza",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "50",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 4
+// 	  },
+// 	  {
+// 		"name": "Burgerizza Pro",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "70",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 5
+// 	  },
+// 	  {
+// 		"name": "Cheese Burger",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "50",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 6
+// 	  },
+// 	  {
+// 		"name": "Dosa-Idli Combo",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "80",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 7
+// 	  },
+// 	  {
+// 		"name": "Burger Combo",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "80",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 8
+// 	  },
+// 	  {
+// 		"name": "Chaap & Rumali Roti Combo",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "80",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 9
+// 	  },
+// 	  {
+// 		"name": "Manchurian Mix",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "80",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 10
+// 	  },
+// 	  {
+// 		"name": "Potato Spring",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "60",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 11
+// 	  },
+// 	  {
+// 		"name": "Fried Rice Manchurian",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "60",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 12
+// 	  },
+// 	  {
+// 		"name": "Veg Momos Noodles",
+// 		"itemsAvailable": "1",
+// 		"image": "https://assets.gopaisa.com/unsafe/0x0/https://gpcdn.ams3.cdn.digitaloceanspaces.com/deals/pizza-mojo-sale.jpg",
+// 		"fullPrice": "50",
+// 		"halfPrice": "",
+// 		"halfAvailable": false,
+// 		"itemNo": 13
+// 	  }
+// 	],
+// 	"rating": "5",
+// 	"discount": "NA",
+// 	"delieveryTime": "40 min"
+//   }

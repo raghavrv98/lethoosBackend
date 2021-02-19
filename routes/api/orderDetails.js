@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const moment = require('moment');
+var mailUtils = require('./../../mail-util')
+
 //customer Login model
 
 const orderDetails = require('../../models/orderDetails')
@@ -33,8 +34,17 @@ router.patch('/customerLogin/orderDetails/:id', async (req, res) => {
 	}
 });
 
-
-
+router.post('/customerLogin/orderDetails/mail', async (req, res) => {
+	const sendOrderDetails = new customerLogin(req.body);
+	try {
+		var message = req.body
+		mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", JSON.stringify(message))
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
 
 module.exports = router;
 
