@@ -37,8 +37,12 @@ router.patch('/customerLogin/orderDetails/:id', async (req, res) => {
 router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 	const sendOrderDetails = new customerLogin(req.body);
 	try {
-		var message = req.body
-		mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", JSON.stringify(message))
+		var data = req.body
+		var customerOrders = data.customerOrders.join("----")
+
+		var message = `Shop Name = ${data.shopName}\n\n Shop Address = ${data.shopAddress}\n\n Shop Mobile Number = ${data.shopMobileNumber}\n\n ----------------------------------------------------------\n\n Customer Name = ${data.customerName}\n\n Customer Address = ${data.customerAddress}\n\n Customer Number = ${data.customerNumber}\n\n Customer Calling Number = ${data.customerCallingNumber}\n\n Customer Payment Method = ${data.customerPaymentMethod}\n\n Customer Total Discount = ${data.customerTotalDiscount}\n\n Customer Total Amount = ${data.customerTotalAmount}\n\n Customer Area = ${data.customerArea}\n\n Customer Order Number = ${data.customerOrderNumber}\n\n Customer Order Date = ${data.customerOrderDate}\n\n ----------------------------------------------------------\n\n Order Details = ${customerOrders}\n\n`
+
+		mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", message)
 		res.status(200).json({ success: true });
 	}
 	catch (err) {

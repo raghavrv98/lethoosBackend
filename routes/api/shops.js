@@ -96,5 +96,29 @@ router.patch('/shop/:id', async (req, res) => {
 	}
 });
 
-
 module.exports = router;
+
+// {
+// 	"name": "Friends Fast Food - FFF",
+// 	"mobileNumber": "8791681511",
+// 	"address": "Near Ghantaghar",
+// 	"image": "https://cdn1.vectorstock.com/i/1000x1000/01/25/cartoon-fast-food-restaurant-small-shop-business-vector-18620125.jpg",
+// 	"status": true,
+// 	"priority": "5",
+// 	"time": "2:00 PM to 8:00 PM",
+// 	"description": "Specially For Chinese and Chaap",
+// 	"details": [
+// 	  {
+// 		"name": "Steam Momos",
+// 		"itemsAvailable": "1",
+// 		"image": "https://c.ndtvimg.com/2020-01/2brioi88_momos_625x300_21_January_20.jpg",
+// 		"fullPrice": "30",
+// 		"halfPrice": "20",
+// 		"halfAvailable": true,
+// 		"itemNo": 1
+// 	  }
+// 	],
+// 	"rating": "5",
+// 	"discount": "NA",
+// 	"delieveryTime": "40 min"
+//   }
