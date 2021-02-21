@@ -6,15 +6,11 @@ const orderSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	shopMobileNumber: {
-		type: String,
-		// required: true,
-	},
 	shopAddress: {
 		type: String,
 		// required: true,
 	},
-	shopImage: {
+	shopMobileNumber: {
 		type: String,
 		// required: true,
 	},
@@ -22,43 +18,47 @@ const orderSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	customerMobileNumber: {
-		type: String,
-		// required: true,
-	},
 	customerAddress: {
 		type: String,
 		// required: true,
 	},
-	orderId: {
+	customerNumber: {
 		type: String,
 		// required: true,
 	},
-	orderDetails: {
+	customerCallingNumber: {
+		type: String,
+		// required: true,
+	},
+	customerPaymentMethod: {
+		type: String,
+		// required: true,
+	},
+	customerTotalDiscount: {
+		type: String,
+		// required: true,
+	},
+	customerTotalAmount: {
+		type: String,
+		// required: true,
+	},
+	customerArea: {
+		type: String,
+		// required: true,
+	},
+	customerOrderNumber: {
+		type: String,
+		// required: true,
+	},
+	customerOrderDate: {
+		type: String,
+		// required: true,
+	},
+	customerOrders: {
 		type: Array,
 		// required: true,
 	},
-	couponCode: {
-		type: Array,
-		// required: true,
-	},
-	deliveryCharge: {
-		type: Number,
-		// required: true,
-	},
-	totalDiscount: {
-		type: Number,
-		// required: true,
-	},
-	paymentMode: {
-		type: String,
-		// required: true,
-	},
-	descrition: {
-		type: String,
-		// required: true,
-	},
-	orderDate: {
+	orderCreatedDate: {
 		type: Number,
 		default: new Date().getTime(),
 	}

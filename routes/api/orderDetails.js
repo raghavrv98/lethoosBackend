@@ -10,7 +10,7 @@ var order
 
 // Order Details
 
-router.post('/orderDetails', async (req, res) => {
+router.post('/customerLogin/orderDetails', async (req, res) => {
 	order = new orderDetails(req.body);
 	try {
 		const post = await order.save();
@@ -38,7 +38,7 @@ router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 	const sendOrderDetails = new customerLogin(req.body);
 	try {
 		var data = req.body
-		var customerOrders = data.customerOrders.join("----")
+		var customerOrders = data.customerOrders
 
 		var message = `Shop Name = ${data.shopName}\n\n Shop Address = ${data.shopAddress}\n\n Shop Mobile Number = ${data.shopMobileNumber}\n\n ----------------------------------------------------------\n\n Customer Name = ${data.customerName}\n\n Customer Address = ${data.customerAddress}\n\n Customer Number = ${data.customerNumber}\n\n Customer Calling Number = ${data.customerCallingNumber}\n\n Customer Payment Method = ${data.customerPaymentMethod}\n\n Customer Total Discount = ${data.customerTotalDiscount}\n\n Customer Total Amount = ${data.customerTotalAmount}\n\n Customer Area = ${data.customerArea}\n\n Customer Order Number = ${data.customerOrderNumber}\n\n Customer Order Date = ${data.customerOrderDate}\n\n ----------------------------------------------------------\n\n Order Details = ${customerOrders}\n\n`
 
