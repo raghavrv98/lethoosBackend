@@ -65,6 +65,6 @@ function errHandler(err, req, res, next) {
 }
 app.use(errHandler)
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server run at port ${PORT}`));
