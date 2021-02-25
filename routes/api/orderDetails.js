@@ -45,10 +45,11 @@ router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 		var data = req.body
 		var customerOrders = data.customerOrders
 
-		var message = `Shop Name = ${data.shopName}\n\n Shop Address = ${data.shopAddress}\n\n Shop Mobile Number = ${data.shopMobileNumber}\n\n ----------------------------------------------------------\n\n Customer Name = ${data.customerName}\n\n Customer Address = ${data.customerAddress}\n\n Customer Number = ${data.customerNumber}\n\n Customer Calling Number = ${data.customerCallingNumber}\n\n Customer Payment Method = ${data.customerPaymentMethod}\n\n Customer Total Discount = ${data.customerTotalDiscount}\n\n Customer Total Amount = ${data.customerTotalAmount}\n\n Customer Area = ${data.customerArea}\n\n Customer Order Number = ${data.customerOrderNumber}\n\n Customer Order Date = ${data.customerOrderDate}\n\n ----------------------------------------------------------\n\n Order Details = ${customerOrders}\n\n`
+		// var message = `Shop Name = ${data.shopName}\n\n Shop Address = ${data.shopAddress}\n\n Shop Mobile Number = ${data.shopMobileNumber}\n\n ----------------------------------------------------------\n\n Customer Name = ${data.customerName}\n\n Customer Address = ${data.customerAddress}\n\n Customer Number = ${data.customerNumber}\n\n Customer Calling Number = ${data.customerCallingNumber}\n\n Customer Payment Method = ${data.customerPaymentMethod}\n\n Customer Total Discount = ${data.customerTotalDiscount}\n\n Customer Total Amount = ${data.customerTotalAmount}\n\n Customer Area = ${data.customerArea}\n\n Customer Order Number = ${data.customerOrderNumber}\n\n Customer Order Date = ${data.customerOrderDate}\n\n ----------------------------------------------------------\n\n Order Details = ${customerOrders}\n\n`
+		// mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", message)
+		// console.log('message: ', message);
 
-		mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", message)
-		console.log('message: ', message);
+		var message = `\nShop Details\n----\nShop Name = ${data.shopName}\n----\n\nCustomer Details\n----\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}\nPayment Method = ${data.customerPaymentMethod}\nTotal Amount = ${data.customerTotalAmount}\n----\nOrder Details\n\n----\n${customerOrders}\n`
 
 		const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: message, numbers: ['8630422423'] }))
 		console.log('response: ', response);
