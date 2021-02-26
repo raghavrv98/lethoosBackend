@@ -43,8 +43,8 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 //user routes 
 
 app.use(express.static(path.join(__dirname, "public/build")));
-app.use('/', (req, resp) => {
-	resp.render('index')
+app.get('/', (req, res) => {
+	res.render('index')
 })
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
@@ -69,6 +69,6 @@ function errHandler(err, req, res, next) {
 }
 app.use(errHandler)
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 app.listen(PORT, () => console.log(`server run at port ${PORT}`));
