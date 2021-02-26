@@ -42,7 +42,10 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 //user routes 
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public/build")));
+app.use('/', (req, resp) => {
+	resp.render('index')
+})
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
 app.use('/api', orderDetailsRoutes);
