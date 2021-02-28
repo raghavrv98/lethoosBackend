@@ -42,13 +42,13 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 //user routes 
 
-app.use(express.static(path.join(__dirname, "public/build")));
-app.get('/', (req, res) => {
-	res.render('index')
-})
-app.get('/login', (req, res) => {
-	res.render('index')
-})
+// app.use(express.static(path.join(__dirname, "public/build")));
+// app.get('/', (req, res) => {
+// 	res.render('index')
+// })
+// app.get('/login', (req, res) => {
+// 	res.render('index')
+// })
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
 app.use('/api', orderDetailsRoutes);
@@ -72,6 +72,6 @@ function errHandler(err, req, res, next) {
 }
 app.use(errHandler)
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server run at port ${PORT}`));
