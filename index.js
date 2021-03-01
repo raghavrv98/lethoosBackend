@@ -52,7 +52,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
 app.use('/api', orderDetailsRoutes);
-
+app.use(express.static(path.join(__dirname,"public")));
 
 app.use('/profile', express.static('upload/images'));
 app.post("/upload", upload.single('profile'), (req, res) => {
