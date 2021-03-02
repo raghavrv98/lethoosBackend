@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
-const wbm = require('wbm');
 
 
 //customer Login model
@@ -136,6 +135,63 @@ router.patch('/customerLogin/:id', async (req, res) => {
 		res.status(400).json({ msg: err })
 	}
 });
+
+// for removing particular key from mongodb
+
+// router.patch('/customerLogin/all/coupons', async (req, res) => {
+// 	try {
+// 		const post = await customerLogin.updateMany({$unset: {'status' : 1}});
+		
+// 		res.status(200).json({ success: true });
+// 	}
+// 	catch (err) {
+// 		res.status(400).json({ msg: err })
+// 	}
+// });
+
+
+
+//update all customer for coupons
+
+router.patch('/customerLogin/all/coupons', async (req, res) => {
+	try {
+		const post = await customerLogin.updateMany({ $push: { "coupon": {
+			name : "WEL10",
+			description : "10 rupees off",
+			offeredBy : "Le Thoos",
+			validity : new Date().getTime() + 172800000,
+			redeemAttempt : 1,
+			amount : 10
+		} } });
+		
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
+
+//update single customer for coupons
+
+router.patch('/customerLogin/coupons/:id', async (req, res) => {
+	try {
+		const post = await customerLogin.updateOne( { "_id" : req.params.id },{ $push: { "coupon": {
+			name : "WEL10",
+			description : "10 rupees off",
+			offeredBy : "Le Thoos",
+			validity : new Date().getTime() + 172800000,
+			redeemAttempt : 1,
+			amount : 10
+		} } });
+		
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
+
+
 
 
 module.exports = router;

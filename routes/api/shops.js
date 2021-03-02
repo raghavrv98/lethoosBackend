@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
+var cron = require('node-cron');
 //shops model
 
 const Shops = require('../../models/shops')
@@ -95,6 +96,39 @@ router.patch('/shop/:id', async (req, res) => {
 		res.status(400).json({ msg: err })
 	}
 });
+
+
+// cron job schedule for shop open
+
+cron.schedule('00 14 * * *', async () => {
+	try {
+		const post = await Shops.updateMany({
+			$set: { "status": true }
+		});
+		console.log("Shop Open");
+	}
+	catch (err) {
+		console.log('err: job failed for closing shop ', err);
+	}
+
+});
+
+// cron job schedule for shop closed
+
+cron.schedule('00 20 * * *', async () => {
+	try {
+		const post = await Shops.updateMany({
+			$set: { "status": false }
+		});
+		console.log("Shop Closed");
+	}
+	catch (err) {
+		console.log('err: job failed for closing shop ', err);
+
+	}
+
+});
+
 
 module.exports = router;
 
