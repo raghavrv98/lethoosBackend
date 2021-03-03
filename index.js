@@ -40,19 +40,22 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, u
 	.then(() => console.log('MongoDB connected'))
 	.catch(err => console.log(err));
 
-//user routes 
+
+//for hosting frontend from backend
 
 // app.use(express.static(path.join(__dirname, "public/build")));
 // app.get('/', (req, res) => {
 // 	res.render('index')
 // })
-// app.get('/login', (req, res) => {
-// 	res.render('index')
-// })
+
+//user routes 
 app.use('/api', shopRoutes);
 app.use('/api', customerLoginRoutes);
 app.use('/api', orderDetailsRoutes);
-app.use(express.static(path.join(__dirname,"public")));
+
+
+// for hosting images
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/profile', express.static('upload/images'));
 app.post("/upload", upload.single('profile'), (req, res) => {
