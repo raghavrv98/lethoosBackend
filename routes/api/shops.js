@@ -61,7 +61,7 @@ router.post('/shop', async (req, res) => {
 	const shops = new Shops(req.body);
 	try {
 		const post = await shops.save();
-		if (!post) throw Error('Something went wrong while saving the post');
+		if (!post) throw Error('Something went wrong while creating the shop');
 		res.status(200).json(post);
 	}
 	catch (err) {
@@ -89,13 +89,46 @@ router.patch('/shop/:id', async (req, res) => {
 	const updatePost = new Shops(req.body);
 	try {
 		const post = await Shops.findByIdAndUpdate(req.params.id, req.body);
-		if (!post) throw Error('Something went wrong while updating the post!');
+		if (!post) throw Error('Something went wrong while updating the profile!');
 		res.status(200).json({ success: true });
 	}
 	catch (err) {
 		res.status(400).json({ msg: err })
 	}
 });
+
+//Status Change for Shops (Open)
+
+router.patch('/shopStatus/open', async (req, res) => {
+	const updatePost = new Shops(req.body);
+	try {
+		const post = await Shops.updateMany({
+			$set: { "status": true }
+		});
+		if (!post) throw Error('Something went wrong while opening the shop!');
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
+
+//Status Change for Shops (Close)
+
+router.patch('/shopStatus/close', async (req, res) => {
+	const updatePost = new Shops(req.body);
+	try {
+		const post = await Shops.updateMany({
+			$set: { "status": false }
+		});
+		if (!post) throw Error('Something went wrong while closing the shop!');
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
+
 
 
 // cron job schedule for shop open

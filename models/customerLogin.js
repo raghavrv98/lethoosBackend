@@ -30,6 +30,10 @@ const customerLoginSchema = new Schema({
 		type: String,
 		// required: true,
 	},
+	accountType: {
+		type: String,
+		// required: true,
+	},
 	image: {
 		type: String,
 		// required: true,

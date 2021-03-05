@@ -30,7 +30,8 @@ router.post('/customerCheck', async (req, res) => {
 				mobileNumber: login[0].mobileNumber,
 				alternateMobileNumber: login[0].alternateMobileNumber,
 				area: login[0].area,
-				address: login[0].address
+				address: login[0].address,
+				accountType: login[0].accountType
 			}
 			userDetails = {
 				msg: "User Exist",
@@ -90,7 +91,8 @@ router.post('/customerLogin', async (req, res) => {
 				address: login.address,
 				name: login.name,
 				mobileNumber: login.mobileNumber,
-				date: login.date
+				date: login.date,
+				accountType: "user"
 			}
 
 			userDetails = {
@@ -141,7 +143,7 @@ router.patch('/customerLogin/:id', async (req, res) => {
 // router.patch('/customerLogin/all/coupons', async (req, res) => {
 // 	try {
 // 		const post = await customerLogin.updateMany({$unset: {'status' : 1}});
-		
+
 // 		res.status(200).json({ success: true });
 // 	}
 // 	catch (err) {
@@ -155,15 +157,19 @@ router.patch('/customerLogin/:id', async (req, res) => {
 
 router.patch('/customerLogin/all/coupons', async (req, res) => {
 	try {
-		const post = await customerLogin.updateMany({ $push: { "coupon": {
-			name : "WEL10",
-			description : "10 rupees off",
-			offeredBy : "Le Thoos",
-			validity : new Date().getTime() + 172800000,
-			redeemAttempt : 1,
-			amount : 10
-		} } });
-		
+		const post = await customerLogin.updateMany({
+			$push: {
+				"coupon": {
+					name: "WEL10",
+					description: "10 rupees off",
+					offeredBy: "Le Thoos",
+					validity: new Date().getTime() + 172800000,
+					redeemAttempt: 1,
+					amount: 10
+				}
+			}
+		});
+
 		res.status(200).json({ success: true });
 	}
 	catch (err) {
@@ -175,15 +181,19 @@ router.patch('/customerLogin/all/coupons', async (req, res) => {
 
 router.patch('/customerLogin/coupons/:id', async (req, res) => {
 	try {
-		const post = await customerLogin.updateOne( { "_id" : req.params.id },{ $push: { "coupon": {
-			name : "WEL10",
-			description : "10 rupees off",
-			offeredBy : "Le Thoos",
-			validity : new Date().getTime() + 172800000,
-			redeemAttempt : 1,
-			amount : 10
-		} } });
-		
+		const post = await customerLogin.updateOne({ "_id": req.params.id }, {
+			$push: {
+				"coupon": {
+					name: "WEL10",
+					description: "10 rupees off",
+					offeredBy: "Le Thoos",
+					validity: new Date().getTime() + 172800000,
+					redeemAttempt: 1,
+					amount: 10
+				}
+			}
+		});
+
 		res.status(200).json({ success: true });
 	}
 	catch (err) {

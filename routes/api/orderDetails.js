@@ -49,8 +49,8 @@ router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 		// mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", message)
 		// console.log('message: ', message);
 
-		var message = `\nShop Details\n----\nShop Name = ${data.shopName}\n----\n\nCustomer Details\n----\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}\nPayment Method = ${data.customerPaymentMethod}\nTotal Amount = ${data.customerTotalAmount}\n----\nOrder Details\n\n----\n${customerOrders}\n`
-
+		var message = `\nShop Details\n----\nShop Name = ${data.shopName}\n----\n\nCustomer Details\n----\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}\nPayment Method = ${data.customerPaymentMethod}\nTotal Amount = ${data.customerTotalAmount}\n----\n\nOrder Specifications\n----\n${data.orderSpecifications}\n\n----\nOrder Details\n----\n${customerOrders}`
+		
 		const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: message, numbers: ['8439395179'] }))
 		console.log('response: ', response);
 
