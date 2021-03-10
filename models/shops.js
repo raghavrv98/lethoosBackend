@@ -22,6 +22,10 @@ const postSchema = new Schema({
 		type: Boolean,
 		// required: true,
 	},
+	isActive: {
+		type: Boolean,
+		// required: true,
+	},
 	priority: {
 		type: String,
 		// required: true,

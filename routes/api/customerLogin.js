@@ -184,7 +184,7 @@ router.patch('/customerLogin/coupons/:id', async (req, res) => {
 		const post = await customerLogin.updateOne({ "_id": req.params.id }, {
 			$push: {
 				"coupon": {
-					name: "WEL10",
+					name: "OFFER10",
 					description: "10 rupees off",
 					offeredBy: "Le Thoos",
 					validity: new Date().getTime() + 172800000,
