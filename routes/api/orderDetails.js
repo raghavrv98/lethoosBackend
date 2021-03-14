@@ -11,12 +11,25 @@ const fast2sms = require('fast-two-sms')
 
 const orderDetails = require('../../models/orderDetails')
 const customerLogin = require('../../models/customerLogin')
+
 var order
 
 // Order Details
 
+router.get('/orderDetails', async (req, res) => {
+	try {
+		let orders = await orderDetails.find();
+		if (!orders) throw Error('No items');
+		res.status(200).json(orders);
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+})
+
 router.post('/customerLogin/orderDetails', async (req, res) => {
 	order = new orderDetails(req.body);
+	console.log('order: ', order);
 	try {
 		const post = await order.save();
 		if (!post) throw Error('Something went wrong while saving the order');
@@ -49,7 +62,9 @@ router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 		// mailUtils.sendMail('lethoooos@gmail.com', "Important: Order Details", message)
 		// console.log('message: ', message);
 
-		var message = `\nShop Details\n----\nShop Name = ${data.shopName}\n----\n\nCustomer Details\n----\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}\nPayment Method = ${data.customerPaymentMethod}\nTotal Amount = ${data.customerTotalAmount}\n----\n\nOrder Specifications\n----\n${data.orderSpecifications}\n\n----\nOrder Details\n----\n${customerOrders}`
+		// var message = `\nShop Details\n----\nShop Name = ${data.shopName}\n----\n\nCustomer Details\n----\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}\nPayment Method = ${data.customerPaymentMethod}\nTotal Amount = ${data.customerTotalAmount}\n----\n\nOrder Specifications\n----\n${data.orderSpecifications}\n\n----\nOrder Details\n----\n${customerOrders}`
+
+		var message = `ORDER PLACED \nShop Name = ${data.shopName}\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}`
 		
 		const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: message, numbers: ['8439395179'] }))
 		console.log('response: ', response);

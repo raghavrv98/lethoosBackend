@@ -2,6 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
+	shopImage: {
+		type: String,
+		// required: true,
+	},
+	customerCoupon: {
+		type: String,
+		// required: true,
+	},
+	orderSpecifications: {
+		type: String,
+		// required: true,
+	},	
+	customerDeliveryCharges: {
+		type: String,
+		// required: true,
+	},	
 	shopName: {
 		type: String,
 		// required: true,
@@ -51,7 +67,7 @@ const orderSchema = new Schema({
 		// required: true,
 	},
 	customerOrderDate: {
-		type: String,
+		type: Number,
 		// required: true,
 	},
 	customerOrders: {
