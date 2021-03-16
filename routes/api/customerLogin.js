@@ -201,6 +201,18 @@ router.patch('/customerLogin/coupons/:id', async (req, res) => {
 	}
 });
 
+router.patch('/customerLogin/orderCancel/:id', async (req, res) => {
+	const updateCustomerLogin = new customerLogin(req.body);
+	try {
+		const login = await customerLogin.findByIdAndUpdate(req.params.id, req.body);
+		if (!login) throw Error('Something went wrong while updating the login!');
+
+		res.status(200).json({ success: true });
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+});
 
 
 

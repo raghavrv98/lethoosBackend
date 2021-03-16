@@ -30,6 +30,14 @@ const orderSchema = new Schema({
 		type: String,
 		// required: true,
 	},
+	customerId: {
+		type: String,
+		// required: true,
+	},
+	isOrderCancel: {
+		type: Boolean,
+		// required: true,
+	},
 	customerName: {
 		type: String,
 		// required: true,
