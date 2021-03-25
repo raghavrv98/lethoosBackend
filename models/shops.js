@@ -20,10 +20,12 @@ const postSchema = new Schema({
 	},
 	status: {
 		type: Boolean,
+		default: true,
 		// required: true,
 	},
 	isActive: {
 		type: Boolean,
+		default: true,
 		// required: true,
 	},
 	priority: {

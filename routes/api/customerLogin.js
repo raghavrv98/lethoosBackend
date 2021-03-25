@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
+const fast2sms = require('fast-two-sms')
 
 
 //customer Login model
@@ -53,6 +54,36 @@ router.post('/customerCheck', async (req, res) => {
 })
 
 
+//forgot password
+
+router.post('/customerLogin/forgotPassword', async (req, res) => {
+	const payload = new customerLogin(req.body);
+	
+	try {
+		let login = await customerLogin.find({ "mobileNumber": payload.mobileNumber })
+		var userDetails = {}
+		if (login.length > 0) {
+			const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: `Your Le Thoos Account password is ${login[0].password}`, numbers: [payload.mobileNumber] }))
+			userDetails = {
+				msg: "SMS sent",
+				data : login
+			}
+		}
+		else {
+			userDetails = {
+				msg: "Incorrect Mobile Number",
+				data: {}
+			}
+		}
+		if (!userDetails) throw Error('No items');
+		res.status(200).json(userDetails);
+	}
+	catch (err) {
+		console.log('err: ', err);
+		res.status(400).json({ msg: err })
+	}
+})
+
 // Get customer Login by id
 
 router.get('/customerLogin/:id', async (req, res) => {
@@ -92,7 +123,7 @@ router.post('/customerLogin', async (req, res) => {
 				name: login.name,
 				mobileNumber: login.mobileNumber,
 				date: login.date,
-				accountType: "user"
+				accountType: login.accountType
 			}
 
 			userDetails = {
@@ -140,10 +171,9 @@ router.patch('/customerLogin/:id', async (req, res) => {
 
 // for removing particular key from mongodb
 
-// router.patch('/customerLogin/all/coupons', async (req, res) => {
+// router.patch('/remove/keyName', async (req, res) => {
 // 	try {
-// 		const post = await customerLogin.updateMany({$unset: {'status' : 1}});
-
+// 		const post = await customerLogin.updateMany({}, {$unset: {"paymentMethod" : 1}});
 // 		res.status(200).json({ success: true });
 // 	}
 // 	catch (err) {
@@ -152,6 +182,21 @@ router.patch('/customerLogin/:id', async (req, res) => {
 // });
 
 
+// for adding particular key in object
+
+// router.patch('/add/keyName', async (req, res) => {
+// 	const updatePost = new customerLogin(req.body);
+// 	try {
+// 		const post = await customerLogin.updateMany({
+// 			$set: { "accountType": "user" }
+// 		});
+// 		if (!post) throw Error('Something went wrong while opening the shop!');
+// 		res.status(200).json({ success: true });
+// 	}
+// 	catch (err) {
+// 		res.status(400).json({ msg: err })
+// 	}
+// });
 
 //update all customer for coupons
 

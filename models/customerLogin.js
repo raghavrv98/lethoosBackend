@@ -22,16 +22,13 @@ const customerLoginSchema = new Schema({
 		type: String,
 		// required: true,
 	},
-	paymentMethod: {
-		type: String,
-		// required: true,
-	},
 	password: {
 		type: String,
 		// required: true,
 	},
 	accountType: {
 		type: String,
+		default: "user",
 		// required: true,
 	},
 	image: {
@@ -52,6 +49,7 @@ const customerLoginSchema = new Schema({
 	},
 	status: {
 		type: Boolean,
+		default: true,
 		// required: true,
 	},
 	date: {
