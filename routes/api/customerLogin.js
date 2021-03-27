@@ -97,6 +97,20 @@ router.get('/customerLogin/:id', async (req, res) => {
 	}
 })
 
+// Get All customers List
+
+router.get('/usersList', async (req, res) => {
+	try {
+		const customers = await customerLogin.find();
+		if (!customers) throw Error('No items');
+		res.status(200).json(customers);
+	}
+	catch (err) {
+		res.status(400).json({ msg: err })
+	}
+})
+
+
 // Create customer Login 
 
 router.post('/customerLogin', async (req, res) => {
