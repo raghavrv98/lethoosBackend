@@ -16,7 +16,8 @@ router.post('/customerCheck', async (req, res) => {
 		let login = await customerLogin.find({
 			$and: [
 				{ "mobileNumber": payload.mobileNumber },
-				{ "password": payload.password }
+				{ "password": payload.password },
+				{ "status": true }
 			]
 		})
 		var userDetails = {}
