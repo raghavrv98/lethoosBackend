@@ -220,11 +220,11 @@ router.patch('/customerLogin/all/coupons', async (req, res) => {
 		const post = await customerLogin.updateMany({
 			$push: {
 				"coupon": {
-					name: "WEL10",
+					name: "FREE10",
 					description: "10 rupees off",
 					offeredBy: "Le Thoos",
-					validity: new Date().getTime() + 172800000,
-					redeemAttempt: 1,
+					validity: new Date().getTime() + 1296000000,
+					redeemAttempt: 10,
 					amount: 10
 				}
 			}
@@ -237,6 +237,25 @@ router.patch('/customerLogin/all/coupons', async (req, res) => {
 	}
 });
 
+// removing particular object from specific array
+
+// router.patch('/object/array', async (req, res) => {
+// 	try {
+// 		const post = await customerLogin.updateMany({
+// 			$pull: {
+// 				"coupon": {
+// 					name: "FREE10"
+// 				}
+// 			}
+// 		});
+
+// 		res.status(200).json({ success: true });
+// 	}
+// 	catch (err) {
+// 		res.status(400).json({ msg: err })
+// 	}
+// });
+
 //update single customer for coupons
 
 router.patch('/customerLogin/coupons/:id', async (req, res) => {
@@ -244,11 +263,11 @@ router.patch('/customerLogin/coupons/:id', async (req, res) => {
 		const post = await customerLogin.updateOne({ "_id": req.params.id }, {
 			$push: {
 				"coupon": {
-					name: "OFFER10",
+					name: "FREE10",
 					description: "10 rupees off",
 					offeredBy: "Le Thoos",
-					validity: new Date().getTime() + 172800000,
-					redeemAttempt: 1,
+					validity: new Date().getTime() + 1296000000,
+					redeemAttempt: 10,
 					amount: 10
 				}
 			}
