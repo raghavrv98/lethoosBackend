@@ -31,8 +31,8 @@ const petrolSchema = new Schema({
 		// required: true,
 	},
 	date: {
-		type: Number,
-		default: new Date().getTime(),
+		type: Date,
+		default: Date.now,
 	}
 })
 

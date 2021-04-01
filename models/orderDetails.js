@@ -84,7 +84,7 @@ const orderSchema = new Schema({
 	},
 	orderCreatedDate: {
 		type: Number,
-		default: new Date().getTime(),
+		default: Date.now,
 	}
 })
 
