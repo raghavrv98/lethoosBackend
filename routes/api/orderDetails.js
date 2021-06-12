@@ -77,7 +77,7 @@ router.post('/customerLogin/orderDetails/mail', async (req, res) => {
 
 		var message = `ORDER PLACED \nShop Name = ${data.shopName}\nName = ${data.customerName}\nAddress = ${data.customerAddress}\nNumber = ${data.customerNumber}\nCalling Number = ${data.customerCallingNumber}`
 
-		const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: message, numbers: ['8439395179'] }))
+		const response = await (fast2sms.sendMessage({ authorization: process.env.API_KEY, message: message, numbers: ['8192095423'] }))
 		console.log('response: ', response);
 
 		res.status(200).json({ success: true });
